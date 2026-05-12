@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { to: "/", label: "Home" },
@@ -13,9 +13,17 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className={`nav ${open ? "nav--open" : ""}`}>
+    <nav className={`nav ${open ? "nav--open" : ""} ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="container nav__inner">
         <Link to="/" className="logo" onClick={() => setOpen(false)}>
           <span className="logo__box" aria-hidden />
@@ -31,7 +39,7 @@ export function Navbar() {
               activeOptions={{ exact: l.to === "/" }}
               onClick={() => setOpen(false)}
             >
-              {l.label}
+              <span className="nav__link-inner" data-text={l.label}>{l.label}</span>
             </Link>
           ))}
           <a

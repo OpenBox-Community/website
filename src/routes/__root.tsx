@@ -7,9 +7,14 @@ import {
   Scripts,
   Link,
 } from "@tanstack/react-router";
+import { useEffect } from "react";
 import appCss from "../styles.css?url";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Cursor } from "@/components/Cursor";
+import { BootLoader } from "@/components/BootLoader";
+import { Atmosphere } from "@/components/Atmosphere";
+import { applyReveal } from "@/lib/reveal";
 
 function NotFoundComponent() {
   return (
@@ -78,8 +83,18 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const path = useRouter().state.location.pathname;
+  useEffect(() => {
+    applyReveal();
+    const t1 = setTimeout(applyReveal, 80);
+    const t2 = setTimeout(applyReveal, 700);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, [path]);
   return (
     <QueryClientProvider client={queryClient}>
+      <Atmosphere />
+      <Cursor />
+      <BootLoader />
       <Navbar />
       <main>
         <Outlet />
