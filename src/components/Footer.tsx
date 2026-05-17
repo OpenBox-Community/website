@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { socials } from "@/data/socials";
+import { SocialIcon } from "@/components/SocialIcon";
 
 export function Footer() {
   return (
@@ -33,11 +34,13 @@ export function Footer() {
 
           <div className="footer__col">
             <h4>Socials</h4>
-            {socials.map((s) => (
-              <a key={s.name} href={s.url} target="_blank" rel="noreferrer">
-                {s.name}
-              </a>
-            ))}
+            <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+              {socials.map((s) => (
+                <a key={s.name} href={s.url} target="_blank" rel="noreferrer" aria-label={s.name}>
+                  <SocialIcon name={s.name} size={20} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

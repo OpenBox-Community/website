@@ -556,6 +556,9 @@ button { font-family: inherit; cursor: pointer; }
 .social:nth-child(4n) { border-right: none; }
 .social__name { font-family: var(--font-display); font-size: 24px; letter-spacing: 0.04em; }
 .social__handle { font-size: 11px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+
+.social svg, .footer__col a svg { display: block; color: var(--muted); }
+.social:hover svg, .footer__col a:hover svg { color: var(--green); }
 @media (max-width: 900px) {
   .socials { grid-template-columns: 1fr 1fr; }
   .social { border-right: 1px solid var(--border); }
@@ -667,33 +670,18 @@ button { font-family: inherit; cursor: pointer; }
 /* Custom cursor */
 html.has-custom-cursor,
 html.has-custom-cursor * { cursor: none !important; }
-.cursor-dot, .cursor-ring {
+.cursor-dot {
   position: fixed; top: 0; left: 0;
   pointer-events: none; z-index: 10000;
   will-change: transform;
-}
-.cursor-dot {
-  width: 14px; height: 14px;
-  display: block;
-}
-.cursor-dot span {
-  position: absolute; background: var(--green);
-}
-.cursor-dot span:nth-child(1) { top: 50%; left: 0; width: 5px; height: 1px; transform: translateY(-50%); }
-.cursor-dot span:nth-child(2) { top: 50%; right: 0; width: 5px; height: 1px; transform: translateY(-50%); }
-.cursor-dot span:nth-child(3) { left: 50%; top: 0; height: 5px; width: 1px; transform: translateX(-50%); }
-.cursor-dot span:nth-child(4) { left: 50%; bottom: 0; height: 5px; width: 1px; transform: translateX(-50%); }
-.cursor-ring {
-  width: 22px; height: 22px;
-  border: 1px solid var(--green);
-  border-radius: 0;
-  transition: width 140ms ease, height 140ms ease, background 140ms ease, border-color 140ms ease;
-  mix-blend-mode: difference;
-}
-.cursor-ring--hover {
-  width: 44px; height: 44px;
+  width: 10px; height: 10px;
   background: var(--green);
-  border-color: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(110,232,122,0.08);
+}
+.cursor-ring {
+  /* kept for compatibility but unused — simple flat cursor target only */
+  display: none;
 }
 
 /* Boot loader */
@@ -718,6 +706,30 @@ html.has-custom-cursor * { cursor: none !important; }
   0% { clip-path: inset(0 100% 0 0); }
   100% { clip-path: inset(0 0 0 0); }
 }
+
+/* New full viewport boot screen */
+.boot-screen {
+  position: fixed; inset: 0; z-index: 20000;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 28px;
+  color: var(--green);
+  transition: transform 600ms ease, opacity 200ms ease;
+}
+.boot-screen--closing { transform: translateY(-100%); }
+.boot-screen__logo-inner {
+  font-family: var(--font-display);
+  font-size: 120px;
+  color: var(--green);
+  width: 200px; height: 200px; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; border: 6px solid var(--green);
+}
+.boot-screen__lines { font-family: var(--font-mono); font-size: 13px; letter-spacing: 2px; color: var(--green); text-transform: none; }
+.boot-line { height: 18px; opacity: 0; }
+.boot-line--on { opacity: 1; }
+.boot-caret { margin-left: 6px; display: inline-block; animation: blink 800ms steps(1,end) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
 
 /* Scanlines overlay */
 .scanlines {

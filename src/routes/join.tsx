@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { socials, tiers } from "@/data/socials";
+import { SocialIcon } from "@/components/SocialIcon";
 import { Ticker } from "@/components/Ticker";
 
 export const Route = createFileRoute("/join")({
@@ -50,8 +51,13 @@ function Join() {
           <div className="socials reveal-from-left">
             {socials.map((s) => (
               <a key={s.name} className="social" href={s.url} target="_blank" rel="noreferrer">
-                <div className="label">// {s.name.toUpperCase()}</div>
-                <div className="social__name">{s.name}</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <SocialIcon name={s.name} size={28} />
+                  <div>
+                    <div className="label">// {s.name.toUpperCase()}</div>
+                    <div className="social__name">{s.name}</div>
+                  </div>
+                </div>
                 <div className="social__handle">{s.handle}</div>
               </a>
             ))}

@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Cursor() {
-  const dot = useRef<HTMLDivElement>(null);
-  const ring = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
@@ -11,47 +9,19 @@ export function Cursor() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setEnabled(true);
 
-    let mx = window.innerWidth / 2;
-    let my = window.innerHeight / 2;
-    let rx = mx, ry = my;
-    let raf = 0;
-
-    const move = (e: MouseEvent) => {
-      mx = e.clientX; my = e.clientY;
-      if (dot.current) dot.current.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
-    };
-    const tick = () => {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      if (ring.current) ring.current.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
-      raf = requestAnimationFrame(tick);
-    };
-    const over = (e: MouseEvent) => {
-      const t = e.target as HTMLElement | null;
-      const hit = t?.closest('a, button, [role="button"], .btn, input, textarea, select, label');
-      ring.current?.classList.toggle("cursor-ring--hover", !!hit);
-    };
-
-    window.addEventListener("mousemove", move, { passive: true });
-    window.addEventListener("mouseover", over, { passive: true });
-    raf = requestAnimationFrame(tick);
-    document.documentElement.classList.add("has-custom-cursor");
+    // Use a native CSS cursor with an inline SVG target. No JS tracking/animation.
+    const svg = encodeURIComponent(
+      "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><line x1='10' y1='4' x2='10' y2='16' stroke='%236EE87A' stroke-width='2' stroke-linecap='round'/><line x1='4' y1='10' x2='16' y2='10' stroke='%236EE87A' stroke-width='2' stroke-linecap='round'/></svg>"
+    );
+    const cursor = `url("data:image/svg+xml;utf8,${svg}") 10 10, auto`;
+    const prev = document.documentElement.style.cursor;
+    document.documentElement.style.cursor = cursor;
 
     return () => {
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", over);
-      cancelAnimationFrame(raf);
-      document.documentElement.classList.remove("has-custom-cursor");
+      document.documentElement.style.cursor = prev || "";
     };
   }, []);
 
   if (!enabled) return null;
-  return (
-    <>
-      <div ref={ring} className="cursor-ring" aria-hidden />
-      <div ref={dot} className="cursor-dot" aria-hidden>
-        <span /><span /><span /><span />
-      </div>
-    </>
-  );
+  return null;
 }
