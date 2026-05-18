@@ -84,12 +84,12 @@ function Join() {
                 <div className="tier__name">{t.name}</div>
                 <div className="tier__price">${t.price}</div>
                 <div className="tier__per">/ month</div>
-                <ul className="tier__perks">
-                  {t.perks.slice(0, 3).map((p) => <li key={p}>{p}</li>)}
-                </ul>
-                <a className="btn btn--ghost btn--block" href="https://patreon.com/openbox" target="_blank" rel="noreferrer">
-                  Pledge →
-                </a>
+                <div className="tier__actions">
+                  <Link to="/tiers" className="btn btn--ghost tier__action--detail">View details →</Link>
+                  <a className="btn tier__action--pledge" href="https://patreon.com/openbox" target="_blank" rel="noreferrer">
+                    Pledge →
+                  </a>
+                </div>
               </div>
             ))}
           </div>

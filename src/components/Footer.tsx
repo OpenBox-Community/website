@@ -13,7 +13,7 @@ export function Footer() {
               <span className="logo__text">OPENBOX</span>
             </Link>
             <p style={{ color: "var(--muted)", marginTop: 16, fontSize: 13, maxWidth: 320 }}>
-              A global community for developers, engineers, and builders in tech. Built by builders, for builders.
+              A community for developers, engineers, and builders in tech. Built by builders, for builders.
             </p>
           </div>
 
@@ -46,7 +46,7 @@ export function Footer() {
 
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} OPENBOX</span>
-          <span>BUILT BY BUILDERS</span>
+          <span>BUILT BY MAHI</span>
         </div>
       </div>
     </footer>

@@ -439,8 +439,9 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 28px;
   letter-spacing: 0.02em;
   margin: 8px 0;
+  color: var(--text);
 }
-.card__desc { color: var(--muted); font-size: 13px; flex: 1; }
+.card__desc { color: var(--text); font-size: 14px; flex: 1; line-height: 1.5; }
 .card__more {
   margin-top: 12px;
   font-family: var(--font-mono);
@@ -744,12 +745,7 @@ html.has-custom-cursor * { cursor: none !important; }
   );
   opacity: 0.03;
   mix-blend-mode: screen;
-  animation: scanShift 8s linear infinite;
-  will-change: background-position;
-}
-@keyframes scanShift {
-  from { background-position: 0 0; }
-  to   { background-position: 0 200px; }
+  /* Disabled animation to reduce CPU usage */
 }
 
 /* Dot grid background */
@@ -760,10 +756,10 @@ html.has-custom-cursor * { cursor: none !important; }
   pointer-events: none; z-index: 0;
   background-image: radial-gradient(circle, var(--border) 1px, transparent 1.5px);
   background-size: 28px 28px;
-  opacity: 0.5;
-  animation: gridPulse 6s ease-in-out infinite;
-  will-change: transform, opacity;
+  opacity: 0.45;
+  /* Disabled animation to reduce CPU usage */
 }
+
 @keyframes gridPulse {
   0%, 100% { opacity: 0.35; }
   50%      { opacity: 0.6; }
@@ -852,10 +848,10 @@ html.has-custom-cursor * { cursor: none !important; }
 /* Tier hover glow + featured pulse */
 .tier { transition: box-shadow 220ms ease, background 120ms ease; }
 .tier:hover { box-shadow: 0 0 16px rgba(110,232,122,0.35), inset 0 0 0 1px var(--green); }
-.pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
+.pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 rgba(110,232,122,0), inset 0 0 0 1px var(--green); }
-  50%      { box-shadow: 0 0 22px rgba(110,232,122,0.45), inset 0 0 0 1px var(--green); }
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.85; }
 }
 
 /* Card hover lift */
@@ -910,6 +906,115 @@ html.has-custom-cursor * { cursor: none !important; }
 /* Ticker hover slow */
 .ticker:hover .ticker__track { animation-duration: 56s; }
 
+/* Modal overlay and dialog */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 200ms ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  padding: 40px;
+  position: relative;
+  animation: slideUp 300ms ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-color: var(--green) var(--bg-2);
+  scrollbar-width: thin;
+}
+
+/* Webkit scrollbar styling (Chrome, Safari, Edge) */
+.modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: var(--bg-2);
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 4px;
+  border: 2px solid var(--bg-2);
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+  background: #7ff47a;
+}
+
+.modal__content {
+  overflow-y: auto;
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 120ms ease;
+  font-size: 18px;
+  z-index: 10;
+}
+
+.modal__close:hover {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(110, 232, 122, 0.1);
+}
+
+.modal__meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 /* Reduced motion: disable everything except basic fades */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -926,3 +1031,33 @@ html.has-custom-cursor * { cursor: none !important; }
 nav, main, footer, .boot { position: relative; z-index: 1; }
 nav { z-index: 100; }
 .boot { z-index: 9998; }
+
+/* Tier card action buttons */
+.tier__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+.tier__actions .btn {
+  width: 100%;
+  padding: 12px 18px;
+  font-size: 13px;
+}
+.tier__action--detail {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.tier__action--detail:hover {
+  box-shadow: 4px 4px 0 var(--border);
+}
+.tier__action--pledge {
+  background: var(--green);
+  color: #000;
+  border-color: var(--green);
+}
+.tier__action--pledge:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--green);
+}

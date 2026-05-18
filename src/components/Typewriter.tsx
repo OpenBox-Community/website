@@ -1,34 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function Typewriter({ lines, speed = 55, className }: { lines: string[]; speed?: number; className?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
   const full = lines.join("\n");
-  const [n, setN] = useState(0);
-  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setN(full.length); setDone(true); return;
+    if (typeof window === "undefined" || !ref.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      ref.current.textContent = full;
+      const caret = ref.current.querySelector(".tw-caret");
+      if (caret) caret.classList.add("tw-caret--blink");
+      return;
     }
+
     let i = 0;
+    const el = ref.current;
+    
     const id = setInterval(() => {
-      i++;
-      setN(i);
-      if (i >= full.length) { clearInterval(id); setDone(true); }
+      if (i < full.length) {
+        el.textContent = full.slice(0, i + 1);
+        i++;
+      } else {
+        clearInterval(id);
+        const caret = el.querySelector(".tw-caret");
+        if (caret) caret.classList.add("tw-caret--blink");
+      }
     }, speed);
+
     return () => clearInterval(id);
   }, [full, speed]);
 
-  const shown = full.slice(0, n);
-  const rendered = shown.split("\n");
   return (
-    <span className={className}>
-      {rendered.map((ln, i) => (
-        <span key={i}>
-          {ln}
-          {i < rendered.length - 1 && <br />}
-        </span>
-      ))}
-      <span className={`tw-caret ${done ? "tw-caret--blink" : ""}`} aria-hidden />
+    <span className={className} ref={ref}>
+      <span className="tw-caret" aria-hidden />
     </span>
   );
 }

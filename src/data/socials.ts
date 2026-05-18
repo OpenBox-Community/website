@@ -13,18 +13,18 @@ export const tiers = [
   {
     name: "Kernel",
     price: 1,
-    perks: ["Supporter role badge", "Early event announcements", "#kernel-lounge access"],
+    perks: ["Supporter role badge", "Early event announcements", ],
   },
   {
     name: "Compiler",
     price: 2,
-    perks: ["Everything in Kernel", "Members only behind the scenes", "Monthly shoutout"],
+    perks: ["Supporter role badge", "Early event announcements", "Members only behind the scenes", "Monthly shoutout"],
   },
   {
     name: "Relay",
     price: 4,
     perks: [
-      "Everything in Compiler",
+     "Supporter role badge", "Early event announcements", "Members only behind the scenes", "Monthly shoutout",
       "Voting rights on community decisions",
       "Direct feedback channel with admins",
       "Early access to OpenBox events",
@@ -35,9 +35,11 @@ export const tiers = [
   {
     name: "Founder",
     price: 8,
-    perks: [
-      "Everything in Relay",
-      "Priority consideration for staff recruitment",
+    perks: ["Supporter role badge", "Early event announcements", , "Members only behind the scenes", "Monthly shoutout",
+"Voting rights on community decisions",
+      "Direct feedback channel with admins",
+      "Early access to OpenBox events",
+      "Discount on next members",      "Priority consideration for staff recruitment",
       "Direct line to core team via private channel",
       "Name in OpenBox credits / about page",
     ],

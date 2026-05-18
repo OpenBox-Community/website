@@ -14,8 +14,8 @@ export const Route = createFileRoute("/")({
 
 const features = [
   { num: "01", title: "Dev & Projects", desc: "Ship real work. Open source collaboration, build channels, code review, and project showcases." },
-  { num: "02", title: "Knowledge Base", desc: "Curated resources, technical deep dives, and answers from people who actually shipped it." },
-  { num: "03", title: "Career", desc: "Job leads, referrals, mock interviews, salary talk. The unfiltered version." },
+  { num: "02", title: "Knowledge Base", desc: "Curated resources, technical deep dives, and answers from people." },
+  { num: "03", title: "Career", desc: "Job leads, referrals, Connections. The unfiltered version." },
   { num: "04", title: "Community Events", desc: "Hackathons, workshops, build nights, competitions. Online and IRL." },
 ];
 
@@ -72,7 +72,7 @@ function Home() {
           <div className="section__head">
             <div>
               <div className="section__num">// 01 — WHAT'S INSIDE</div>
-              <h2 className="display h2" style={{ marginTop: 12 }}>FOUR CHANNELS.<br />ONE COMMUNITY.</h2>
+              <h2 className="display h2" style={{ marginTop: 12 }}>MULTIPLE CHANNELS.<br />ONE COMMUNITY.</h2>
             </div>
             <p style={{ color: "var(--muted)", maxWidth: 360 }}>
               Built around how builders actually work — not how marketing departments think they do.
@@ -99,7 +99,7 @@ function Home() {
           <div className="label">// JOIN US</div>
           <h2 className="display h2" style={{ marginTop: 16 }}>JOIN THE BUILDERS.</h2>
           <p>Free to join. No applications. Just show up and build.</p>
-          <a className="btn" href="https://discord.gg/openbox" target="_blank" rel="noreferrer">
+          <a className="btn" href="https://discord.gg/nE2pyegR5y" target="_blank" rel="noreferrer">
             discord.gg/openbox
           </a>
         </div>

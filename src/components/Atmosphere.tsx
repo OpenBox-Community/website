@@ -1,21 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function Atmosphere() {
-  const [y, setY] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef(0);
+
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || !gridRef.current) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => setY(window.scrollY * 0.3));
+
+    const grid = gridRef.current;
+    let ticking = false;
+
+    const update = () => {
+      grid.style.transform = `translate3d(0, ${-window.scrollY * 0.3}px, 0)`;
+      ticking = false;
     };
+
+    const onScroll = () => {
+      if (!ticking) {
+        rafRef.current = requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => { window.removeEventListener("scroll", onScroll); cancelAnimationFrame(raf); };
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
+
   return (
     <>
-      <div className="dot-grid" aria-hidden style={{ transform: `translate3d(0, ${-y}px, 0)` }} />
+      <div className="dot-grid" ref={gridRef} aria-hidden />
       <div className="scanlines" aria-hidden />
     </>
   );
