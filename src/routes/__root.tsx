@@ -22,6 +22,8 @@ function NotFoundComponent() {
       <div className="container" style={{ padding: "120px 24px", textAlign: "center" }}>
         <h1 className="display h1" style={{ color: "var(--green)" }}>404</h1>
         <p className="label" style={{ marginTop: 16 }}>PAGE NOT FOUND</p>
+        <p style={{ color: "var(--muted)", marginTop: 16 }}>We encourage you to think outside the box but not this far.</p>
+        <p style={{ color: "var(--muted)", marginTop: 16 }}>The page you are looking for does not exist.</p>
         <div style={{ marginTop: 32 }}>
           <Link to="/" className="btn">Return Home</Link>
         </div>

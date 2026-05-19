@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/docs")({
@@ -32,7 +32,7 @@ const ROLES_LIST = [
 
 const FAQS_LIST = [
   { q: "Why was I muted/banned?", a: <>Mutes and bans are applied when community guidelines are breached. You will receive an automated direct message from the bot explaining the policy violated and the specific logs recorded.</> },
-  { q: "How do I appeal a mod action?", a: <>If you feel a decision was made in error, email <code style={{ color: "var(--green)" }}>appeals@openbox.community</code> or use the anonymous ticket appeal form linked in your ban notice DM.</> },
+  // { q: "How do I appeal a mod action?", a: <>If you feel a decision was made in error, email <code style={{ color: "var(--green)" }}>appeals@openboxcomm.in</code> or use the anonymous ticket appeal form linked in your ban notice DM.</> },
   { q: "How do I change my server nickname?", a: <>Go to your server profile settings on Discord or use <code>/nick</code>. We highly encourage matching your nickname with your GitHub or Twitter builder handles so community members recognize your work!</> },
   { q: "Where do I post my project?", a: <>Use the <code>#show-and-tell</code> forum category! Create a new thread, add tags for your stack, write a summary, and drop the live URL or repository link.</> },
 ];
@@ -83,6 +83,7 @@ function Docs() {
               <a href="#contributing" className={activeTab === "contributing" ? "active" : ""}>08 Contributing</a>
               <a href="#events" className={activeTab === "events" ? "active" : ""}>09 Community Events</a>
               <a href="#support-tiers" className={activeTab === "support-tiers" ? "active" : ""}>10 Support & Patreon</a>
+              {/* <a href="#runway" className={activeTab === "runway" ? "active" : ""}>11 Runway & Calendar</a> */}
             </aside>
 
             {/* MAIN READING CONTENT */}
@@ -253,7 +254,7 @@ function Docs() {
                 <p>
                   Appeal tickets are evaluated by our community administrators.
                   To appeal a permanent server ban, submit a formal appeal detailing the infraction context and system logs to{" "}
-                  <code style={{ color: "var(--green)" }}>appeals@openbox.community</code>.
+                  <code style={{ color: "var(--green)" }}>appeals@openboxcomm.in</code>.
                 </p>
               </section>
 
@@ -307,7 +308,7 @@ function Docs() {
                 <p>
                   If you experience misconduct or unfair treatment from a moderator, do not engage in public disputes.
                   Submit a detailed report directly to the core owners via the secure email:{" "}
-                  <code style={{ color: "var(--green)" }}>team@openbox.community</code>.
+                  <code style={{ color: "var(--green)" }}>team@openboxcomm.in</code>.
                   All complaints are reviewed under strict confidentiality.
                 </p>
                 <h3>Why Can't I See Certain Channels?</h3>
@@ -365,44 +366,14 @@ function Docs() {
                   Your sponsorships allow us to maintain fast server hosting, build custom bots, and organize events.
                 </p>
                 <h3>Tier Benefits & Pricing</h3>
-                <div className="docs-table-wrapper">
-                  <table className="docs-table">
-                    <thead>
-                      <tr>
-                        <th>Tier Name</th>
-                        <th>Pricing</th>
-                        <th>Premium Perks & Unlocks</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><strong>Standard Member</strong></td>
-                        <td>Free</td>
-                        <td>Access to general dev channels, showcased projects, open community events.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Alpha Tier</strong></td>
-                        <td>$5 / mo</td>
-                        <td>Exclusive Alpha chat channels, early access tools, unique blue server handle, profile badge.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Beta Tier</strong></td>
-                        <td>$15 / mo</td>
-                        <td>All Alpha perks, custom profile hex color command, vote rights on features, and private code reviews.</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Enterprise Developer</strong></td>
-                        <td>$50 / mo</td>
-                        <td>All previous tier perks, direct developer consulting tickets, showcase highlight slots on the homepage.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <p>
+                  To see a detailed breakdown of all available support tiers, pricing, and their corresponding perks, please visit our dedicated Tiers page.
+                </p>
+                <Link to="/tiers" className="btn btn--ghost" style={{ marginBottom: 32, display: "inline-flex" }}>View Support Tiers →</Link>
                 <h3>How to Upgrade or Renew Your Tier</h3>
                 <p>
                   Pledge at our Patreon page: <code style={{ color: "var(--green)" }}>patreon.com/openbox</code>.
                   Once subscribed, link your Discord and Patreon profiles in Patreon settings.
-                  Run the <code>/upgrade</code> command in the server to sync your roles immediately.
                   For monthly renewals, the system syncs automatically; if you experience delays, simply run <code>/renew</code>
                   to refresh your credentials.
                 </p>
@@ -413,6 +384,15 @@ function Docs() {
                   Both paths help fund our infrastructure!
                 </p>
               </section>
+
+              {/* SECTION 11 */}
+              {/* <section id="runway">
+                <h2>11 / Runway & Calendar</h2>
+                <p>
+                  Curious about what we are shipping next? Check out our official runway and community calendar to see upcoming features, milestones, and events.
+                </p>
+                <Link to="/runway" className="btn" style={{ marginTop: 16, display: "inline-flex" }}>View Runway & Calendar →</Link>
+              </section> */}
             </div>
           </div>
         </div>

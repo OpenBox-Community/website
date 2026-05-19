@@ -33,6 +33,13 @@ export function Footer() {
           </div>
 
           <div className="footer__col">
+            <h4>Contact</h4>
+            <a href="mailto:team@openboxcomm.in">team@openboxcomm.in</a>
+            <a href="mailto:support@openboxcomm.in">support@openboxcomm.in</a>
+            <a href="mailto:appeals@openboxcomm.in">appeals@openboxcomm.in</a>
+          </div>
+
+          <div className="footer__col">
             <h4>Socials</h4>
             <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
               {socials.map((s) => (
