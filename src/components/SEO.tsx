@@ -13,7 +13,7 @@ export function seo({
   const defaultDesc =
     "Join the OpenBox Community, a dedicated space for developers, software engineers, and builders in tech to collaborate, share projects, and find career opportunities.";
   const defaultKeywords =
-    "OpenBox community, developer community, tech community, software engineers, builders, coding, programming, OpenBox, developer recruitment, tech jobs";
+    "OpenBox, Open Box, openBox, open box comm, open box community, openboxcomm, OpenBox community, developer community, tech community, software engineers, builders, coding, programming, developer recruitment, tech jobs";
 
   const metaTags = [
     { title: title ? `${title} | OpenBox Community` : defaultTitle },
