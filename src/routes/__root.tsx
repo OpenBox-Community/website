@@ -16,6 +16,7 @@ import { Cursor } from "@/components/Cursor";
 import { BootLoader } from "@/components/BootLoader";
 import { Atmosphere } from "@/components/Atmosphere";
 import { applyReveal } from "@/lib/reveal";
+import { Analytics } from "@vercel/analytics/react";
 
 function NotFoundComponent() {
   return (
@@ -112,6 +113,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <Analytics />
     </QueryClientProvider>
   );
 }
