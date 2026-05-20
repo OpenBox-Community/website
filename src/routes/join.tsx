@@ -86,7 +86,7 @@ function Join() {
                 <div className="tier__per">/ month</div>
                 <div className="tier__actions">
                   <Link to="/tiers" className="btn btn--ghost tier__action--detail">View details →</Link>
-                  <a className="btn tier__action--pledge" href="https://patreon.com/openbox" target="_blank" rel="noreferrer">
+                  <a className="btn tier__action--pledge" href="https://patreon.com/OpenBoxComm" target="_blank" rel="noreferrer">
                     Pledge →
                   </a>
                 </div>

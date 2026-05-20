@@ -42,7 +42,7 @@ function Tiers() {
                 </ul>
                 <a
                   className={`btn ${"featured" in t && t.featured ? "" : "btn--ghost"} btn--block`}
-                  href="https://patreon.com/openbox"
+                  href="https://patreon.com/OpenBoxComm"
                   target="_blank"
                   rel="noreferrer"
                 >

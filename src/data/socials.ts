@@ -4,7 +4,7 @@ export const socials = [
   { name: "YouTube", handle: "@openboxcomm", url: "https://youtube.com/@openboxcomm" },
   { name: "X", handle: "@openboxcomm", url: "https://x.com/openboxcomm" },
   // { name: "LinkedIn", handle: "/company/openbox", url: "https://linkedin.com/company/openbox" },
-  { name: "Patreon", handle: "/openbox", url: "https://patreon.com/openbox" },
+  { name: "Patreon", handle: "/openbox", url: "https://patreon.com/OpenBoxComm" },
   { name: "GitHub", handle: "/openboxcomm", url: "https://github.com/openboxcomm" },
   // { name: "WhatsApp", handle: "channel/openbox", url: "https://whatsapp.com/channel/openbox" },
 ] as const;
