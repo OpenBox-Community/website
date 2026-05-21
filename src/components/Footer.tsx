@@ -18,7 +18,7 @@ export function Footer() {
           </div>
 
           <div className="footer__col">
-            <h4>Navigate</h4>
+            <h3>Navigate</h3>
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
             <Link to="/tiers">Tiers</Link>
@@ -26,21 +26,21 @@ export function Footer() {
           </div>
 
           <div className="footer__col">
-            <h4>More</h4>
+            <h3>More</h3>
             <Link to="/blog">Blog</Link>
             <Link to="/join">Join</Link>
             <Link to="/docs">Docs</Link>
           </div>
 
           <div className="footer__col">
-            <h4>Contact</h4>
+            <h3>Contact</h3>
             <a href="mailto:team@openboxcomm.in">team@openboxcomm.in</a>
             <a href="mailto:support@openboxcomm.in">support@openboxcomm.in</a>
             <a href="mailto:appeals@openboxcomm.in">appeals@openboxcomm.in</a>
           </div>
 
           <div className="footer__col">
-            <h4>Socials</h4>
+            <h3>Socials</h3>
             <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
               {socials.map((s) => (
                 <a key={s.name} href={s.url} target="_blank" rel="noreferrer" aria-label={s.name}>

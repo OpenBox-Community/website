@@ -7,16 +7,17 @@ import {
   Scripts,
   Link,
 } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import appCss from "../styles.css?url";
 import { seo } from "@/components/SEO";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { Cursor } from "@/components/Cursor";
-import { BootLoader } from "@/components/BootLoader";
-import { Atmosphere } from "@/components/Atmosphere";
-import { applyReveal } from "@/lib/reveal";
 import { Analytics } from "@vercel/analytics/react";
+
+const AtmosphereLazy = lazy(() => import("@/components/Atmosphere").then(m => ({ default: m.Atmosphere })));
+const CursorLazy = lazy(() => import("@/components/Cursor").then(m => ({ default: m.Cursor })));
+const BootLoaderLazy = lazy(() => import("@/components/BootLoader").then(m => ({ default: m.BootLoader })));
+const FooterLazy = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
+import { applyReveal } from "@/lib/reveal";
 
 function NotFoundComponent() {
   return (
@@ -57,10 +58,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       ...seo(),
+      { name: "google-site-verification", content: "YOUR_CODE_HERE" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      // Preconnect to Google Fonts domains for faster font loading
+      { rel: "preconnect", href: "https://fonts.googleapis.com", crossOrigin: true },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: true }
     ],
   }),
   shellComponent: RootShell,
@@ -108,15 +113,17 @@ function RootComponent() {
   }, [path]);
   return (
     <QueryClientProvider client={queryClient}>
-      <Atmosphere />
-      <Cursor />
-      <BootLoader />
-      <Navbar />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
-      <Analytics />
+      <Suspense fallback={null}>
+        <AtmosphereLazy />
+        <CursorLazy />
+        <BootLoaderLazy />
+        <Navbar />
+        <main>
+          <Outlet />
+        </main>
+        <FooterLazy />
+        <Analytics />
+      </Suspense>
     </QueryClientProvider>
   );
 }

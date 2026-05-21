@@ -73,12 +73,27 @@ export function SocialIcon({ name, size = 20 }: { name: string; size?: number })
 
 export function OpenBoxLogo({ size = 32 }: { size?: number }) {
   return (
-    <img
-      src="/open.png"
-      alt="OpenBox logo"
+    <svg
       width={size}
       height={size}
-      style={{ objectFit: "contain", display: "inline-block", verticalAlign: "middle" }}
-    />
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="OpenBox logo"
+      role="img"
+      style={{ display: "inline-block", verticalAlign: "middle" }}
+    >
+      <rect width="100" height="100" rx="20" fill="#0a0a0a" />
+      <text
+        x="50"
+        y="68"
+        fontFamily="system-ui, -apple-system, sans-serif"
+        fontSize="48"
+        fontWeight="bold"
+        fill="#4ade80"
+        textAnchor="middle"
+      >
+        OB
+      </text>
+    </svg>
   );
 }
