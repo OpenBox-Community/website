@@ -169,13 +169,18 @@ function Docs() {
                   We utilize clear categories to separate deep work discussions, general chatter, and platform support logs.
                 </p>
                 <h3>Category Breakdown</h3>
-                <ul>
-                  <li><strong>🪐 SYSTEM:</strong> Start here, read announcements, view server statuses, and access role customization tabs.</li>
-                  <li><strong>💻 HUB:</strong> General dev chat, open-ended discussions, and industry tech news feeds.</li>
-                  <li><strong>🚀 SHOWCASE:</strong> The core of the server. Post live links in <code>#show-and-tell</code>, share snippets, and ask for code reviews.</li>
-                  <li><strong>🛠️ BUILD CHANNELS:</strong> Focused, sub-segmented text categories specializing in Web Dev, Systems, Mobile, Design, AI, and hardware.</li>
-                  <li><strong>🏆 EVENTS:</strong> Dynamic channels dedicated to community virtual sessions, dev streams, and builder hackathons.</li>
-                </ul>
+               <ul>
+  <li><strong>🔒 Mod Space:</strong> Staff-only category for moderation, internal coordination, and server management.</li>
+  <li><strong>🦴 BackBone:</strong> A dedicated lounge for supporters who are backing the community.</li>
+  <li><strong>👋 Welcome & Info:</strong> Start here. Server rules, announcements, role selection, and onboarding guides.</li>
+  <li><strong>💬 Community Hub:</strong> General chat, introductions, open discussions, and community-wide conversations.</li>
+  <li><strong>🎉 Hobbies-n-Fun:</strong> Off-topic and casual spaces. Memes, gaming, music, and everything non-tech.</li>
+  <li><strong>⚙️ Dev & Projects:</strong> The core builder space. Share projects, collaborate, post code snippets, and get reviews.</li>
+  <li><strong>📚 Knowledge Base:</strong> Curated resources, technical deep dives, tutorials, and community-sourced learning material.</li>
+  <li><strong>💼 Career:</strong> Job leads, referrals, resume help, internship discussions, and industry connections.</li>
+  <li><strong>🎪 Events:</strong> Hackathons, workshops, build nights, AMAs, and both online and offline community events.</li>
+  <li><strong>📝 Feedback:</strong> Share suggestions, report issues, and help shape the direction of the community.</li>
+</ul>
                 <h3>Channel Types Explained</h3>
                 <div className="docs-table-wrapper">
                   <table className="docs-table">
