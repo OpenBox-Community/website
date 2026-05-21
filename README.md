@@ -32,6 +32,7 @@ To start the local development server, run:
 npm run dev
 ```
 The application will typically be accessible at `http://localhost:8080`.
+Visit the live site: https://www.openboxcomm.in
 ## 🎨 Theming
 OpenBox supports multiple custom themes! Themes can be toggled and are saved locally to your browser. The currently supported themes are:
 - `black` (Default)
