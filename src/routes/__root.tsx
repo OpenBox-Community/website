@@ -11,12 +11,11 @@ import { useEffect, Suspense, lazy } from "react";
 import appCss from "../styles.css?url";
 import { seo } from "@/components/SEO";
 import { Navbar } from "@/components/Navbar";
-import { LoadingScreen } from "@/components/LoadingScreen";
+import { BootLoader, LoadingScreen } from "@/components/BootLoader";
 import { Analytics } from "@vercel/analytics/react";
 
 const AtmosphereLazy = lazy(() => import("@/components/Atmosphere").then(m => ({ default: m.Atmosphere })));
 const CursorLazy = lazy(() => import("@/components/Cursor").then(m => ({ default: m.Cursor })));
-import { BootLoader } from "@/components/BootLoader";
 const FooterLazy = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
 import { applyReveal } from "@/lib/reveal";
 
