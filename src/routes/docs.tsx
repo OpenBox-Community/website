@@ -60,7 +60,7 @@ const ROLES_LIST = [
   { category: "PARTNERS", name: "Partner, Partner +, Partner ++", type: "Partner Tier", unlock: "Tiered access for verified partners. Higher tiers unlock greater visibility, collaboration privileges, and network integration.", acquisition: "Through filing the form in <code>#updrade</code> channel." },
   
   // NOTIFICATIONS
-  { category: "NOTIFICATIONS", name: "Content Ping, Events in Server, Events in Offline, DNS, Poll", type: "Notification & Utility Roles", unlock: "Opt-in roles to receive specific pings and updates. Pick only what is relevant to you.", acquisition: "Via <code>#roles</code> channel." },
+  { category: "NOTIFICATIONS", name: "Content Ping, Events in Server, Events in Offline, DNS, DBW, Poll", type: "Notification & Utility Roles", unlock: "Opt-in roles to receive specific pings and updates. Pick only what is relevant to you.", acquisition: "Via <code>#roles</code> channel." },
 ];
 
 const FAQS_LIST = [

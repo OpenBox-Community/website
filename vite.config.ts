@@ -5,11 +5,8 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-import prerender from "vite-plugin-prerender";
-import critical from "rollup-plugin-critical";
 
-        },
-      },
-    },
-  },
+export default defineConfig({
+  // Add any project-specific overrides here.
+  // The base config from @lovable.dev already handles plugins, aliases, and dev server settings.
 });

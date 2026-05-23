@@ -73,63 +73,76 @@ export const POSTS: BlogPost[] = [
       }
     ]
   },
-  // {
-  //   id: "build-log-the-openbox-bot",
-  //   title: "Build Log: The OpenBox Bot",
-  //   date: "2026-05-08",
-  //   tag: "Build Log",
-  //   desc: "How we built the role-sync bot from scratch. Stack, gotchas, and what we'd do differently.",
-  //   readingTime: "6 min read",
-  //   author: {
-  //     name: "Marcus Vance",
-  //     role: "Backend Lead",
-  //     avatar: "MV"
-  //   },
-  //   content: [
-  //     {
-  //       type: "paragraph",
-  //       text: "To run a smooth, automated community, we needed a robust backend utility to manage roles, subscriptions, and profiles dynamically. We built 'OpenBox Bot'—a custom Discord automation utility tailored to our community infrastructure."
-  //     },
-  //     {
-  //       type: "heading",
-  //       text: "The Tech Stack"
-  //     },
-  //     {
-  //       type: "paragraph",
-  //       text: "We opted for a highly responsive, modern stack to ensure instant response times and easy maintenance:"
-  //     },
-  //     {
-  //       type: "list",
-  //       items: [
-  //         "Runtime: Node.js with TypeScript for end-to-end type safety.",
-  //         "Framework: Discord.js for rich gateway API interactions.",
-  //         "Hosting: Deployed as a secure microservice using container images on Cloud Run.",
-  //         "Database: PostgreSQL for reliable, transactional storage of linked metadata."
-  //       ]
-  //     },
-  //     {
-  //       type: "heading",
-  //       text: "Inside the Code"
-  //     },
-  //     {
-  //       type: "paragraph",
-  //       text: "Here is a simplified snippet of our guild member update handler that synchronizes role assignments in response to Patreon webhook events:"
-  //     },
-  //     {
-  //       type: "code",
-  //       language: "typescript",
-  //       code: `import { Client, GuildMember } from "discord.js";\n\nexport async function syncUserRoles(\n  client: Client,\n  userId: string,\n  tier: "Kernel" | "Compiler" | "Relay" | "Founder"\n) {\n  const guild = await client.guilds.fetch(process.env.GUILD_ID!);\n  const member = await guild.members.fetch(userId);\n\n  const roleMap: Record<string, string> = {\n    Kernel: process.env.ROLE_KERNEL_ID!,\n    Compiler: process.env.ROLE_COMPILER_ID!,\n    Relay: process.env.ROLE_RELAY_ID!,\n    Founder: process.env.ROLE_FOUNDER_ID!,\n  };\n\n  const targetRoleId = roleMap[tier];\n  if (targetRoleId && !member.roles.cache.has(targetRoleId)) {\n    await member.roles.add(targetRoleId);\n    console.log(\`Successfully assigned \${tier} role to user \${member.user.tag}\`);\n  }\n}`
-  //     },
-  //     {
-  //       type: "heading",
-  //       text: "Gotchas & Lessons Learned"
-  //     },
-  //     {
-  //       type: "paragraph",
-  //       text: "Handling Discord rate limits was a primary hurdle. When bulk synchronization requests are triggered simultaneously, API updates can back up. We resolved this by introducing a task queue with sliding window rate limit back-off logic."
-  //     }
-  //   ]
-  // },
+ {
+  id: "dbw-what-is-day-before-weekend",
+  title: "DBW: What Is Day Before Weekend?",
+  date: "2026-05-23",
+  tag: "Community",
+  desc: "Every Friday, the OpenBox team drops a weekly update called DBW. Here is what it is, what it covers, and how to never miss one.",
+  readingTime: "3 min read",
+  author: {
+    name: "OpenBox Team",
+    role: "Community Team",
+    avatar: "OB"
+  },
+  content: [
+    {
+      type: "paragraph",
+      text: "Every Friday, the OpenBox admin team drops a post called DBW — Day Before Weekend. It is the official weekly update for the server. One post. Everything that changed, everything coming up, and everything you need to know before the weekend hits."
+    },
+    {
+      type: "heading",
+      text: "Where to Find It"
+    },
+    {
+      type: "paragraph",
+      text: "DBW lives in its own dedicated channel: #🇩🇧🇼-♾️. Every edition is archived there, starting from DBW #001. If you missed a week, you can scroll back and catch up anytime."
+    },
+    {
+      type: "heading",
+      text: "How to Get Notified"
+    },
+    {
+      type: "paragraph",
+      text: "We added a dedicated DBW ping role so you get notified the moment a new post drops. It replaces the old @Citizen ping, which means only members who actually want the update get tagged. Head to the Roles channel and opt in."
+    },
+    {
+      type: "heading",
+      text: "What Each DBW Covers"
+    },
+    {
+      type: "paragraph",
+      text: "Every DBW post is structured into clear sections so you can scan fast and find what is relevant to you:"
+    },
+    {
+      type: "list",
+      items: [
+        "Role Updates — new roles added, existing roles changed, and anything affecting your access or tags.",
+        "Channel Updates — new channels, removed channels, restructured categories, and what moved where.",
+        "Announcements — big news from the team. Domain updates, Patreon, partnerships, and server milestones.",
+        "From Last Week — a recap of what actually happened. Events that ran, discussions that fired off, things worth revisiting.",
+        "Events Wrapup — recaps of any hackathons, AMAs, build nights, or stage sessions that happened during the week.",
+        "Coming Up Next — what is in the pipeline. Upcoming events, features in progress, and open calls for suggestions."
+      ]
+    },
+    {
+      type: "heading",
+      text: "Why We Started It"
+    },
+    {
+      type: "paragraph",
+      text: "Discord servers move fast. Channels get added, bots get swapped, events come and go. Without a weekly checkpoint most members miss things that matter to them. DBW is that checkpoint. One post, every Friday, so nobody is ever fully out of the loop."
+    },
+    {
+      type: "heading",
+      text: "The Sign-Off"
+    },
+    {
+      type: "paragraph",
+      text: "Every DBW ends the same way. No matter what shipped or what broke during the week, the last line is always the same: More updates coming next Friday. Because it's always DaY BeFoRe WeEkEnD around here."
+    }
+  ]
+},
   // {
   //   id: "featured-member-projects-01",
   //   title: "Featured: Member Projects #01",

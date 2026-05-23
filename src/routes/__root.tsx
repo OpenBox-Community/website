@@ -11,11 +11,12 @@ import { useEffect, Suspense, lazy } from "react";
 import appCss from "../styles.css?url";
 import { seo } from "@/components/SEO";
 import { Navbar } from "@/components/Navbar";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import { Analytics } from "@vercel/analytics/react";
 
 const AtmosphereLazy = lazy(() => import("@/components/Atmosphere").then(m => ({ default: m.Atmosphere })));
 const CursorLazy = lazy(() => import("@/components/Cursor").then(m => ({ default: m.Cursor })));
-const BootLoaderLazy = lazy(() => import("@/components/BootLoader").then(m => ({ default: m.BootLoader })));
+import { BootLoader } from "@/components/BootLoader";
 const FooterLazy = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
 import { applyReveal } from "@/lib/reveal";
 
@@ -88,6 +89,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
                   const allowed = ['black', 'deep-blue', 'violet', 'slate', 'teal'];
                   const theme = allowed.includes(saved) ? saved : 'black';
                   document.documentElement.setAttribute('data-theme', theme);
+                  
+                  if (!sessionStorage.getItem('openboxBootShown')) {
+                    document.documentElement.setAttribute('data-booting', 'true');
+                  }
                 } catch (e) {}
               })()
             `,
@@ -113,10 +118,10 @@ function RootComponent() {
   }, [path]);
   return (
     <QueryClientProvider client={queryClient}>
-      <Suspense fallback={null}>
+      <Suspense fallback={<LoadingScreen />}>
         <AtmosphereLazy />
         <CursorLazy />
-        <BootLoaderLazy />
+        <BootLoader />
         <Navbar />
         <main>
           <Outlet />

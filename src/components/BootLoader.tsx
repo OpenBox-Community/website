@@ -18,7 +18,10 @@ export function BootLoader() {
     if (typeof window === "undefined") return;
     try {
       const shown = sessionStorage.getItem("openboxBootShown");
-      if (shown) return;
+      if (shown) {
+        document.documentElement.removeAttribute("data-booting");
+        return;
+      }
     } catch (e) {
       // ignore
     }
@@ -47,6 +50,7 @@ export function BootLoader() {
       }
       timer = window.setTimeout(() => {
         setVisible(false);
+        document.documentElement.removeAttribute("data-booting");
         try { sessionStorage.setItem("openboxBootShown", "1"); } catch (e) {}
       }, 600);
     };

@@ -110,6 +110,13 @@ button { font-family: inherit; cursor: pointer; }
   min-height: 100vh;
 }
 
+/* Hide main content while BootLoader is active */
+html[data-booting="true"] nav,
+html[data-booting="true"] main,
+html[data-booting="true"] footer {
+  display: none !important;
+}
+
 /* Typography */
 .display {
   font-family: var(--font-display);

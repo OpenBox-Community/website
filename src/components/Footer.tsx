@@ -8,10 +8,10 @@ export function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div className="footer__col">
-            <Link to="/" className="logo">
-              <OpenBoxLogo size={28} />
-              <span className="logo__text">OPENBOX</span>
-            </Link>
+          <Link to="/" className="logo">
+  <OpenBoxLogo size={28} />
+  <span className="logo__text" style={{ marginLeft: "10px" }}>OPENBOX</span>
+</Link>
             <p style={{ color: "var(--muted)", marginTop: 16, fontSize: 13, maxWidth: 320 }}>
               A community for developers, engineers, and builders in tech. Built by builders, for builders.
             </p>
@@ -33,7 +33,7 @@ export function Footer() {
           </div>
 
           <div className="footer__col">
-            <h3>Contact</h3>
+            <h3>Contact <br></br> (🚫RECOMENDED)</h3>
             <a href="mailto:team@openboxcomm.in">team@openboxcomm.in</a>
             <a href="mailto:support@openboxcomm.in">support@openboxcomm.in</a>
             <a href="mailto:appeals@openboxcomm.in">appeals@openboxcomm.in</a>
@@ -53,7 +53,7 @@ export function Footer() {
 
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} OPENBOX</span>
-          <span>BUILT BY MAHI</span>
+          {/* <span>BUILT BY MAHI</span> */}
         </div>
       </div>
     </footer>
