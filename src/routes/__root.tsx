@@ -14,21 +14,33 @@ import { Navbar } from "@/components/Navbar";
 import { BootLoader, LoadingScreen } from "@/components/BootLoader";
 import { Analytics } from "@vercel/analytics/react";
 
-const AtmosphereLazy = lazy(() => import("@/components/Atmosphere").then(m => ({ default: m.Atmosphere })));
-const CursorLazy = lazy(() => import("@/components/Cursor").then(m => ({ default: m.Cursor })));
-const FooterLazy = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
+const AtmosphereLazy = lazy(() =>
+  import("@/components/Atmosphere").then((m) => ({ default: m.Atmosphere })),
+);
+const CursorLazy = lazy(() => import("@/components/Cursor").then((m) => ({ default: m.Cursor })));
+const FooterLazy = lazy(() => import("@/components/Footer").then((m) => ({ default: m.Footer })));
 import { applyReveal } from "@/lib/reveal";
 
 function NotFoundComponent() {
   return (
     <div className="page">
       <div className="container" style={{ padding: "120px 24px", textAlign: "center" }}>
-        <h1 className="display h1" style={{ color: "var(--green)" }}>404</h1>
-        <p className="label" style={{ marginTop: 16 }}>PAGE NOT FOUND</p>
-        <p style={{ color: "var(--muted)", marginTop: 16 }}>We encourage you to think outside the box but not this far.</p>
-        <p style={{ color: "var(--muted)", marginTop: 16 }}>The page you are looking for does not exist.</p>
+        <h1 className="display h1" style={{ color: "var(--green)" }}>
+          404
+        </h1>
+        <p className="label" style={{ marginTop: 16 }}>
+          PAGE NOT FOUND
+        </p>
+        <p style={{ color: "var(--muted)", marginTop: 16 }}>
+          We encourage you to think outside the box but not this far.
+        </p>
+        <p style={{ color: "var(--muted)", marginTop: 16 }}>
+          The page you are looking for does not exist.
+        </p>
         <div style={{ marginTop: 32 }}>
-          <Link to="/" className="btn">Return Home</Link>
+          <Link to="/" className="btn">
+            Return Home
+          </Link>
         </div>
       </div>
     </div>
@@ -44,8 +56,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="display h2">SOMETHING BROKE.</h1>
         <p style={{ color: "var(--muted)", marginTop: 16 }}>{error.message}</p>
         <div style={{ marginTop: 32, display: "flex", gap: 12, justifyContent: "center" }}>
-          <button className="btn" onClick={() => { router.invalidate(); reset(); }}>Retry</button>
-          <a href="/" className="btn btn--ghost">Home</a>
+          <button
+            className="btn"
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+          >
+            Retry
+          </button>
+          <a href="/" className="btn btn--ghost">
+            Home
+          </a>
         </div>
       </div>
     </div>
@@ -65,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       // Preconnect to Google Fonts domains for faster font loading
       { rel: "preconnect", href: "https://fonts.googleapis.com", crossOrigin: true },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: true }
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: true },
     ],
   }),
   shellComponent: RootShell,
@@ -113,7 +135,10 @@ function RootComponent() {
     applyReveal();
     const t1 = setTimeout(applyReveal, 80);
     const t2 = setTimeout(applyReveal, 700);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, [path]);
   return (
     <QueryClientProvider client={queryClient}>

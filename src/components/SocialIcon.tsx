@@ -1,15 +1,15 @@
 import React from "react";
 
 export function SocialIcon({ name, size = 20 }: { name: string; size?: number }) {
-  const common = { 
-    width: size, 
-    height: size, 
-    viewBox: "0 0 24 24", 
+  const common = {
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
     xmlns: "http://www.w3.org/2000/svg",
-    style: { display: "inline-block", verticalAlign: "middle" }
-  } as any;
+    style: { display: "inline-block", verticalAlign: "middle" },
+  } as const;
   const color = "currentColor";
-  
+
   switch (name) {
     case "Discord":
       return (
@@ -61,7 +61,14 @@ export function SocialIcon({ name, size = 20 }: { name: string; size?: number })
       );
     case "Email":
       return (
-        <svg {...common} fill="none" stroke={color} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          {...common}
+          fill="none"
+          stroke={color}
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
           <polyline points="22,6 12,13 2,6" />
         </svg>

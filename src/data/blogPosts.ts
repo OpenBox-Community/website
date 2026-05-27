@@ -30,24 +30,24 @@ export const POSTS: BlogPost[] = [
     author: {
       name: "Admin",
       role: "Core Organizer",
-      avatar: "A"
+      avatar: "A",
     },
     content: [
       {
         type: "paragraph",
-        text: "The wait is over. OpenBox is officially live. Over the past One months, a core group of two people been building the foundation of what we hope will become the premier space for tech builders worldwide."
+        text: "The wait is over. OpenBox is officially live. Over the past One months, a core group of two people been building the foundation of what we hope will become the premier space for tech builders worldwide.",
       },
       {
         type: "heading",
-        text: "What is OpenBox?"
+        text: "What is OpenBox?",
       },
       {
         type: "paragraph",
-        text: "OpenBox is not another networking group. It is an active ecosystem designed exclusively for people who write code, build hardware, and design systems. We value rough consensus and running code over corporate slides and theoretical frameworks."
+        text: "OpenBox is not another networking group. It is an active ecosystem designed exclusively for people who write code, build hardware, and design systems. We value rough consensus and running code over corporate slides and theoretical frameworks.",
       },
       {
         type: "heading",
-        text: "Features at Launch"
+        text: "Features at Launch",
       },
       {
         type: "list",
@@ -55,23 +55,23 @@ export const POSTS: BlogPost[] = [
           "Integrated Discord Sync: Connect your builder profiles directly to roles.",
           "Interactive Build Logs: Share step-by-step progress on your current builds.",
           "Weekly Build Nights: Show up, collaborate, and launch something in 3 hours.",
-          "Open Docs Directory: Access community-curated guides on advanced tooling."
-        ]
+          "Open Docs Directory: Access community-curated guides on advanced tooling.",
+        ],
       },
       {
         type: "quote",
         text: "The best way to predict the future is to build it. OpenBox is the place where builders meet to do exactly that.",
-        author: "OpenBox Core Manifesto"
+        author: "OpenBox Core Manifesto",
       },
       {
         type: "heading",
-        text: "How to Get Started"
+        text: "How to Get Started",
       },
       {
         type: "paragraph",
-        text: "Getting involved is simple. Head over to our Join page, jump into the Discord server, introduce yourself in #introductions, and share what you are working on in #showcase. We can't wait to see what you build."
-      }
-    ]
+        text: "Getting involved is simple. Head over to our Join page, jump into the Discord server, introduce yourself in #introductions, and share what you are working on in #showcase. We can't wait to see what you build.",
+      },
+    ],
   },
   // {
   //   id: "featured-member-projects-01",

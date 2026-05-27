@@ -30,7 +30,7 @@ export function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    
+
     // Restore theme from localStorage on client load
     const saved = localStorage.getItem("ob-theme") || "black";
     const allowed = ["black", "deep-blue", "violet", "slate", "teal"];
@@ -39,7 +39,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const changeTheme = (newTheme: typeof THEMES[number]["id"]) => {
+  const changeTheme = (newTheme: (typeof THEMES)[number]["id"]) => {
     setThemeState(newTheme);
     if (typeof document !== "undefined") {
       document.documentElement.setAttribute("data-theme", newTheme);
@@ -64,23 +64,30 @@ export function Navbar() {
               activeOptions={{ exact: l.to === "/" }}
               onClick={() => setOpen(false)}
             >
-              <span className="nav__link-inner" data-text={l.label}>{l.label}</span>
+              <span className="nav__link-inner" data-text={l.label}>
+                {l.label}
+              </span>
             </Link>
           ))}
 
           {/* Desktop Theme Selector Dropdown */}
           <div className="theme-selector-desktop">
-            <button 
-              className="theme-btn" 
-              onClick={() => setDropdownOpen(o => !o)}
+            <button
+              className="theme-btn"
+              onClick={() => setDropdownOpen((o) => !o)}
               onBlur={() => setTimeout(() => setDropdownOpen(false), 200)}
               aria-label="Select background theme"
             >
-              <span className="theme-indicator" style={{ background: THEMES.find(t => t.id === theme)?.color || "#000" }} />
-              <span className="theme-label">{THEMES.find(t => t.id === theme)?.label || "Black"}</span>
+              <span
+                className="theme-indicator"
+                style={{ background: THEMES.find((t) => t.id === theme)?.color || "#000" }}
+              />
+              <span className="theme-label">
+                {THEMES.find((t) => t.id === theme)?.label || "Black"}
+              </span>
               <span className="theme-arrow">▼</span>
             </button>
-            
+
             {dropdownOpen && (
               <div className="theme-dropdown">
                 {THEMES.map((t) => (
@@ -127,11 +134,7 @@ export function Navbar() {
           </div>
         </div>
 
-        <button
-          className="nav__burger"
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
+        <button className="nav__burger" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
           {open ? "CLOSE" : "MENU"}
         </button>
       </div>

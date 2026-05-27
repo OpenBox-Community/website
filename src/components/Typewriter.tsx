@@ -1,6 +1,14 @@
 import { useEffect, useRef } from "react";
 
-export function Typewriter({ lines, speed = 55, className }: { lines: string[]; speed?: number; className?: string }) {
+export function Typewriter({
+  lines,
+  speed = 55,
+  className,
+}: {
+  lines: string[];
+  speed?: number;
+  className?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const full = lines.join("\n");
 
@@ -15,7 +23,7 @@ export function Typewriter({ lines, speed = 55, className }: { lines: string[]; 
 
     let i = 0;
     const el = ref.current;
-    
+
     const id = setInterval(() => {
       if (i < full.length) {
         el.textContent = full.slice(0, i + 1);

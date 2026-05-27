@@ -11,10 +11,26 @@ export const Route = createFileRoute("/")({
 });
 
 const features = [
-  { num: "01", title: "Dev & Projects", desc: "Ship real work. Open source collaboration, build channels, code review, and project showcases." },
-  { num: "02", title: "Knowledge Base", desc: "Curated resources, technical deep dives, and answers from people." },
-  { num: "03", title: "Career", desc: "Job leads, referrals, Connections. The unfiltered version." },
-  { num: "04", title: "Community Events", desc: "Hackathons, workshops, build nights, competitions. Online and IRL." },
+  {
+    num: "01",
+    title: "Dev & Projects",
+    desc: "Ship real work. Open source collaboration, build channels, code review, and project showcases.",
+  },
+  {
+    num: "02",
+    title: "Knowledge Base",
+    desc: "Curated resources, technical deep dives, and answers from people.",
+  },
+  {
+    num: "03",
+    title: "Career",
+    desc: "Job leads, referrals, Connections. The unfiltered version.",
+  },
+  {
+    num: "04",
+    title: "Community Events",
+    desc: "Hackathons, workshops, build nights, competitions. Online and IRL.",
+  },
 ];
 
 function Home() {
@@ -25,19 +41,24 @@ function Home() {
         <div className="container">
           <div className="hero__meta">
             <span className="label fade-up">// OPENBOX / V1.0</span>
-            <span className="label fade-up">STATUS: <span style={{ color: "var(--green)" }}>ONLINE</span></span>
+            <span className="label fade-up">
+              STATUS: <span style={{ color: "var(--green)" }}>ONLINE</span>
+            </span>
           </div>
           <h1 className="display h1 hero__title">
             <Typewriter lines={["WHERE", "BUILDERS", "MEET."]} speed={55} />
           </h1>
           <p className="hero__sub hero__sub--delayed">
-            A dedicated space for developers, engineers, and creators in tech. Open. Builder-first. No gatekeeping.
+            A dedicated space for developers, engineers, and creators in tech. Open. Builder-first.
+            No gatekeeping.
           </p>
           <div className="hero__ctas fade-up fade-up--3">
             <a className="btn" href="https://discord.gg/openbox" target="_blank" rel="noreferrer">
               Join Discord →
             </a>
-            <Link className="btn btn--ghost" to="/tiers">View Tiers</Link>
+            <Link className="btn btn--ghost" to="/tiers">
+              View Tiers
+            </Link>
           </div>
         </div>
       </section>
@@ -70,7 +91,11 @@ function Home() {
           <div className="section__head">
             <div>
               <div className="section__num">// 01 — WHAT'S INSIDE</div>
-              <h2 className="display h2" style={{ marginTop: 12 }}>MULTIPLE CHANNELS.<br />ONE COMMUNITY.</h2>
+              <h2 className="display h2" style={{ marginTop: 12 }}>
+                MULTIPLE CHANNELS.
+                <br />
+                ONE COMMUNITY.
+              </h2>
             </div>
             <p style={{ color: "var(--muted)", maxWidth: 360 }}>
               Built around how builders actually work — not how marketing departments think they do.
@@ -95,7 +120,9 @@ function Home() {
       <section className="cta-section">
         <div className="container">
           <div className="label">// JOIN US</div>
-          <h2 className="display h2" style={{ marginTop: 16 }}>JOIN THE BUILDERS.</h2>
+          <h2 className="display h2" style={{ marginTop: 16 }}>
+            JOIN THE BUILDERS.
+          </h2>
           <p>Free to join. No applications. Just show up and build.</p>
           <a className="btn" href="https://discord.gg/nE2pyegR5y" target="_blank" rel="noreferrer">
             discord.gg/openbox

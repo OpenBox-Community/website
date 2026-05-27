@@ -21,14 +21,14 @@ export function BlogContent({ filter }: { filter?: string }) {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
 
-  const filteredPosts = POSTS.filter(p => {
+  const filteredPosts = POSTS.filter((p) => {
     if (!filter) return true;
     const f = filter.toLowerCase();
-    if (f === 'dbw') {
-      return p.title.toLowerCase().includes('dbw') || p.tag.toLowerCase() === 'dbw';
+    if (f === "dbw") {
+      return p.title.toLowerCase().includes("dbw") || p.tag.toLowerCase() === "dbw";
     }
     return p.tag.toLowerCase() === f;
-  }).filter(p => p.tag.toLowerCase() !== 'dbw');
+  }).filter((p) => p.tag.toLowerCase() !== "dbw");
 
   // Sync state with URL query parameter
   useEffect(() => {
@@ -80,7 +80,10 @@ export function BlogContent({ filter }: { filter?: string }) {
   if (selectedPost) {
     return (
       <div className="page">
-        <article className="container fade-up" style={{ maxWidth: "800px", paddingBottom: "100px" }}>
+        <article
+          className="container fade-up"
+          style={{ maxWidth: "800px", paddingBottom: "100px" }}
+        >
           {/* Post Header Control */}
           <div style={{ padding: "32px 0 24px" }}>
             <button
@@ -91,7 +94,7 @@ export function BlogContent({ filter }: { filter?: string }) {
                 padding: "8px 16px",
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "8px"
+                gap: "8px",
               }}
             >
               ← BACK TO UPDATES
@@ -102,62 +105,76 @@ export function BlogContent({ filter }: { filter?: string }) {
           <div style={{ display: "flex", gap: "12px", alignItems: "center", marginBottom: "16px" }}>
             <span className="tag">{selectedPost.tag}</span>
             <span className="label">{selectedPost.date}</span>
-            <span className="label" style={{ color: "var(--muted)" }}>•</span>
-            <span className="label" style={{ color: "var(--muted)" }}>{selectedPost.readingTime}</span>
+            <span className="label" style={{ color: "var(--muted)" }}>
+              •
+            </span>
+            <span className="label" style={{ color: "var(--muted)" }}>
+              {selectedPost.readingTime}
+            </span>
           </div>
 
           {/* Big Title */}
-          <h1 className="display h2" style={{ marginBottom: "32px", lineHeight: "1.1", textTransform: "uppercase" }}>
+          <h1
+            className="display h2"
+            style={{ marginBottom: "32px", lineHeight: "1.1", textTransform: "uppercase" }}
+          >
             {selectedPost.title}
           </h1>
 
           {/* Author info card */}
-          <div 
-            style={{ 
-              display: "flex", 
-              alignItems: "center", 
-              gap: "16px", 
-              borderTop: "1px solid var(--border)", 
-              borderBottom: "1px solid var(--border)", 
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
+              borderTop: "1px solid var(--border)",
+              borderBottom: "1px solid var(--border)",
               padding: "16px 0",
-              marginBottom: "40px"
+              marginBottom: "40px",
             }}
           >
-            <div 
-              style={{ 
-                width: "40px", 
-                height: "40px", 
-                background: "var(--green)", 
+            <div
+              style={{
+                width: "40px",
+                height: "40px",
+                background: "var(--green)",
                 color: "#000",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontFamily: "var(--font-mono)",
                 fontWeight: "bold",
-                fontSize: "14px"
+                fontSize: "14px",
               }}
             >
               {selectedPost.author.avatar}
             </div>
             <div>
-              <div className="label" style={{ color: "var(--text)" }}>{selectedPost.author.name}</div>
-              <div className="label" style={{ fontSize: "9px", color: "var(--muted)" }}>{selectedPost.author.role}</div>
+              <div className="label" style={{ color: "var(--text)" }}>
+                {selectedPost.author.name}
+              </div>
+              <div className="label" style={{ fontSize: "9px", color: "var(--muted)" }}>
+                {selectedPost.author.role}
+              </div>
             </div>
           </div>
 
           {/* Rich Content Renderer */}
-          <div className="post-content" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div
+            className="post-content"
+            style={{ display: "flex", flexDirection: "column", gap: "24px" }}
+          >
             {selectedPost.content.map((item, idx) => {
               switch (item.type) {
                 case "paragraph":
                   return (
-                    <p 
-                      key={idx} 
-                      style={{ 
-                        fontSize: "16px", 
-                        lineHeight: "1.75", 
+                    <p
+                      key={idx}
+                      style={{
+                        fontSize: "16px",
+                        lineHeight: "1.75",
                         color: "var(--text)",
-                        margin: 0
+                        margin: 0,
                       }}
                     >
                       {item.text}
@@ -165,14 +182,14 @@ export function BlogContent({ filter }: { filter?: string }) {
                   );
                 case "heading":
                   return (
-                    <h3 
-                      key={idx} 
-                      className="display h3" 
-                      style={{ 
-                        color: "var(--green)", 
-                        marginTop: "24px", 
+                    <h3
+                      key={idx}
+                      className="display h3"
+                      style={{
+                        color: "var(--green)",
+                        marginTop: "24px",
                         marginBottom: "8px",
-                        textTransform: "uppercase" 
+                        textTransform: "uppercase",
                       }}
                     >
                       {item.text}
@@ -180,24 +197,24 @@ export function BlogContent({ filter }: { filter?: string }) {
                   );
                 case "list":
                   return (
-                    <ul 
-                      key={idx} 
-                      style={{ 
-                        paddingLeft: "20px", 
-                        margin: 0, 
-                        display: "flex", 
-                        flexDirection: "column", 
-                        gap: "12px" 
+                    <ul
+                      key={idx}
+                      style={{
+                        paddingLeft: "20px",
+                        margin: 0,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "12px",
                       }}
                     >
                       {item.items.map((li, lidx) => (
-                        <li 
-                          key={lidx} 
-                          style={{ 
-                            fontSize: "15px", 
-                            lineHeight: "1.6", 
+                        <li
+                          key={lidx}
+                          style={{
+                            fontSize: "15px",
+                            lineHeight: "1.6",
                             color: "var(--text)",
-                            listStyleType: "square"
+                            listStyleType: "square",
                           }}
                         >
                           {li}
@@ -207,8 +224,8 @@ export function BlogContent({ filter }: { filter?: string }) {
                   );
                 case "quote":
                   return (
-                    <blockquote 
-                      key={idx} 
+                    <blockquote
+                      key={idx}
                       style={{
                         borderLeft: "3px solid var(--green)",
                         background: "var(--bg-2)",
@@ -216,10 +233,17 @@ export function BlogContent({ filter }: { filter?: string }) {
                         margin: "12px 0",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "8px"
+                        gap: "8px",
                       }}
                     >
-                      <p style={{ fontStyle: "italic", fontSize: "16px", margin: 0, color: "var(--text)" }}>
+                      <p
+                        style={{
+                          fontStyle: "italic",
+                          fontSize: "16px",
+                          margin: 0,
+                          color: "var(--text)",
+                        }}
+                      >
                         "{item.text}"
                       </p>
                       {item.author && (
@@ -231,27 +255,29 @@ export function BlogContent({ filter }: { filter?: string }) {
                   );
                 case "code":
                   return (
-                    <div 
-                      key={idx} 
-                      style={{ 
-                        border: "1px solid var(--border)", 
-                        background: "#050805", 
+                    <div
+                      key={idx}
+                      style={{
+                        border: "1px solid var(--border)",
+                        background: "#050805",
                         margin: "12px 0",
-                        position: "relative"
+                        position: "relative",
                       }}
                     >
                       {/* Code Block Header */}
-                      <div 
-                        style={{ 
-                          display: "flex", 
-                          justifyContent: "space-between", 
-                          alignItems: "center", 
-                          background: "var(--bg-2)", 
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          background: "var(--bg-2)",
                           padding: "8px 16px",
-                          borderBottom: "1px solid var(--border)"
+                          borderBottom: "1px solid var(--border)",
                         }}
                       >
-                        <span className="label" style={{ fontSize: "10px" }}>{item.language.toUpperCase()}</span>
+                        <span className="label" style={{ fontSize: "10px" }}>
+                          {item.language.toUpperCase()}
+                        </span>
                         <button
                           onClick={() => handleCopy(item.code, idx)}
                           style={{
@@ -261,21 +287,21 @@ export function BlogContent({ filter }: { filter?: string }) {
                             fontFamily: "var(--font-mono)",
                             fontSize: "10px",
                             cursor: "pointer",
-                            padding: "4px 8px"
+                            padding: "4px 8px",
                           }}
                         >
                           {copiedIdx === idx ? "COPIED" : "COPY"}
                         </button>
                       </div>
-                      <pre 
-                        style={{ 
-                          margin: 0, 
-                          padding: "20px", 
+                      <pre
+                        style={{
+                          margin: 0,
+                          padding: "20px",
                           overflowX: "auto",
                           fontFamily: "var(--font-mono)",
                           fontSize: "13px",
                           lineHeight: "1.5",
-                          color: "#a4e8a9"
+                          color: "#a4e8a9",
                         }}
                       >
                         <code>{item.code}</code>
@@ -297,7 +323,11 @@ export function BlogContent({ filter }: { filter?: string }) {
       <header className="page-header">
         <div className="container">
           <div className="page-header__crumb fade-up">// BLOG</div>
-          <h1 className="display h1 page-header__title fade-up fade-up--1">UPDATES<br/>FROM THE BOX.</h1>
+          <h1 className="display h1 page-header__title fade-up fade-up--1">
+            UPDATES
+            <br />
+            FROM THE BOX.
+          </h1>
           <p className="page-header__sub fade-up fade-up--2">
             Announcements, build logs, featured member work. No SEO fluff.
           </p>
@@ -307,8 +337,12 @@ export function BlogContent({ filter }: { filter?: string }) {
       <section className="section">
         <div className="container">
           <div className="filters">
-            <Link to="/blog" className={`filter ${!filter ? 'filter--active' : ''}`}>ALL</Link>
-            <Link to="/blog/dbw" className={`filter ${filter === 'dbw' ? 'filter--active' : ''}`}>DBW</Link>
+            <Link to="/blog" className={`filter ${!filter ? "filter--active" : ""}`}>
+              ALL
+            </Link>
+            <Link to="/blog/dbw" className={`filter ${filter === "dbw" ? "filter--active" : ""}`}>
+              DBW
+            </Link>
           </div>
         </div>
       </section>
@@ -323,8 +357,8 @@ export function BlogContent({ filter }: { filter?: string }) {
           ) : (
             <div className="card-grid">
               {filteredPosts.map((p) => (
-                <article 
-                  key={p.id} 
+                <article
+                  key={p.id}
                   className="card"
                   onClick={() => openPost(p)}
                   style={{ cursor: "pointer" }}

@@ -71,7 +71,10 @@ export function DBWBlogContent() {
   if (selectedPost) {
     return (
       <div className="page">
-        <article className="container fade-up" style={{ maxWidth: "800px", paddingBottom: "100px" }}>
+        <article
+          className="container fade-up"
+          style={{ maxWidth: "800px", paddingBottom: "100px" }}
+        >
           {/* Post Header Control */}
           <div style={{ padding: "32px 0 24px" }}>
             <button
@@ -82,7 +85,7 @@ export function DBWBlogContent() {
                 padding: "8px 16px",
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "8px"
+                gap: "8px",
               }}
             >
               ← BACK TO DBW
@@ -93,12 +96,19 @@ export function DBWBlogContent() {
           <div style={{ display: "flex", gap: "12px", alignItems: "center", marginBottom: "16px" }}>
             <span className="tag">{selectedPost.tag}</span>
             <span className="label">{selectedPost.date}</span>
-            <span className="label" style={{ color: "var(--muted)" }}>•</span>
-            <span className="label" style={{ color: "var(--muted)" }}>{selectedPost.readingTime}</span>
+            <span className="label" style={{ color: "var(--muted)" }}>
+              •
+            </span>
+            <span className="label" style={{ color: "var(--muted)" }}>
+              {selectedPost.readingTime}
+            </span>
           </div>
 
           {/* Big Title */}
-          <h1 className="display h2" style={{ marginBottom: "32px", lineHeight: "1.1", textTransform: "uppercase" }}>
+          <h1
+            className="display h2"
+            style={{ marginBottom: "32px", lineHeight: "1.1", textTransform: "uppercase" }}
+          >
             {selectedPost.title}
           </h1>
 
@@ -111,7 +121,7 @@ export function DBWBlogContent() {
               borderTop: "1px solid var(--border)",
               borderBottom: "1px solid var(--border)",
               padding: "16px 0",
-              marginBottom: "40px"
+              marginBottom: "40px",
             }}
           >
             <div
@@ -125,19 +135,26 @@ export function DBWBlogContent() {
                 justifyContent: "center",
                 fontFamily: "var(--font-mono)",
                 fontWeight: "bold",
-                fontSize: "14px"
+                fontSize: "14px",
               }}
             >
               {selectedPost.author.avatar}
             </div>
             <div>
-              <div className="label" style={{ color: "var(--text)" }}>{selectedPost.author.name}</div>
-              <div className="label" style={{ fontSize: "9px", color: "var(--muted)" }}>{selectedPost.author.role}</div>
+              <div className="label" style={{ color: "var(--text)" }}>
+                {selectedPost.author.name}
+              </div>
+              <div className="label" style={{ fontSize: "9px", color: "var(--muted)" }}>
+                {selectedPost.author.role}
+              </div>
             </div>
           </div>
 
           {/* Rich Content Renderer */}
-          <div className="post-content" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div
+            className="post-content"
+            style={{ display: "flex", flexDirection: "column", gap: "24px" }}
+          >
             {selectedPost.content.map((item, idx) => {
               switch (item.type) {
                 case "paragraph":
@@ -148,7 +165,7 @@ export function DBWBlogContent() {
                         fontSize: "16px",
                         lineHeight: "1.75",
                         color: "var(--text)",
-                        margin: 0
+                        margin: 0,
                       }}
                     >
                       {item.text}
@@ -163,7 +180,7 @@ export function DBWBlogContent() {
                         color: "var(--green)",
                         marginTop: "24px",
                         marginBottom: "8px",
-                        textTransform: "uppercase"
+                        textTransform: "uppercase",
                       }}
                     >
                       {item.text}
@@ -178,7 +195,7 @@ export function DBWBlogContent() {
                         margin: 0,
                         display: "flex",
                         flexDirection: "column",
-                        gap: "12px"
+                        gap: "12px",
                       }}
                     >
                       {item.items.map((li, lidx) => (
@@ -188,7 +205,7 @@ export function DBWBlogContent() {
                             fontSize: "15px",
                             lineHeight: "1.6",
                             color: "var(--text)",
-                            listStyleType: "square"
+                            listStyleType: "square",
                           }}
                         >
                           {li}
@@ -207,10 +224,17 @@ export function DBWBlogContent() {
                         margin: "12px 0",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "8px"
+                        gap: "8px",
                       }}
                     >
-                      <p style={{ fontStyle: "italic", fontSize: "16px", margin: 0, color: "var(--text)" }}>
+                      <p
+                        style={{
+                          fontStyle: "italic",
+                          fontSize: "16px",
+                          margin: 0,
+                          color: "var(--text)",
+                        }}
+                      >
                         "{item.text}"
                       </p>
                       {item.author && (
@@ -228,7 +252,7 @@ export function DBWBlogContent() {
                         border: "1px solid var(--border)",
                         background: "#050805",
                         margin: "12px 0",
-                        position: "relative"
+                        position: "relative",
                       }}
                     >
                       {/* Code Block Header */}
@@ -239,10 +263,12 @@ export function DBWBlogContent() {
                           alignItems: "center",
                           background: "var(--bg-2)",
                           padding: "8px 16px",
-                          borderBottom: "1px solid var(--border)"
+                          borderBottom: "1px solid var(--border)",
                         }}
                       >
-                        <span className="label" style={{ fontSize: "10px" }}>{item.language.toUpperCase()}</span>
+                        <span className="label" style={{ fontSize: "10px" }}>
+                          {item.language.toUpperCase()}
+                        </span>
                         <button
                           onClick={() => handleCopy(item.code, idx)}
                           style={{
@@ -252,7 +278,7 @@ export function DBWBlogContent() {
                             fontFamily: "var(--font-mono)",
                             fontSize: "10px",
                             cursor: "pointer",
-                            padding: "4px 8px"
+                            padding: "4px 8px",
                           }}
                         >
                           {copiedIdx === idx ? "COPIED" : "COPY"}
@@ -266,7 +292,7 @@ export function DBWBlogContent() {
                           fontFamily: "var(--font-mono)",
                           fontSize: "13px",
                           lineHeight: "1.5",
-                          color: "#a4e8a9"
+                          color: "#a4e8a9",
                         }}
                       >
                         <code>{item.code}</code>
@@ -288,7 +314,11 @@ export function DBWBlogContent() {
       <header className="page-header">
         <div className="container">
           <div className="page-header__crumb fade-up">// DBW</div>
-          <h1 className="display h1 page-header__title fade-up fade-up--1">DAY BEFORE<br/>WEEKEND.</h1>
+          <h1 className="display h1 page-header__title fade-up fade-up--1">
+            DAY BEFORE
+            <br />
+            WEEKEND.
+          </h1>
           <p className="page-header__sub fade-up fade-up--2">
             Weekly updates from the OpenBox team. Every Friday.
           </p>
@@ -298,7 +328,9 @@ export function DBWBlogContent() {
       <section className="section">
         <div className="container">
           <div className="filters">
-            <Link to="/blog" className={`filter`}>← BACK TO BLOG</Link>
+            <Link to="/blog" className={`filter`}>
+              ← BACK TO BLOG
+            </Link>
           </div>
         </div>
       </section>

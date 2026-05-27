@@ -25,10 +25,10 @@ export function BootLoader() {
     } catch (e) {
       // ignore
     }
-    
+
     setVisible(true);
     let idx = 0;
-    
+
     const showLine = () => {
       if (containerRef.current && idx < LINES.length) {
         const lineEl = containerRef.current.children[idx] as HTMLElement;
@@ -43,7 +43,7 @@ export function BootLoader() {
         }
       }
     };
-    
+
     const closeBoot = () => {
       if (containerRef.current) {
         containerRef.current.classList.add("boot-screen--closing");
@@ -51,12 +51,18 @@ export function BootLoader() {
       timer = window.setTimeout(() => {
         setVisible(false);
         document.documentElement.removeAttribute("data-booting");
-        try { sessionStorage.setItem("openboxBootShown", "1"); } catch (e) {}
+        try {
+          sessionStorage.setItem("openboxBootShown", "1");
+        } catch (e) {
+          // Suppress storage errors silently
+        }
       }, 600);
     };
-    
+
     let timer = window.setTimeout(showLine, 120);
-    return () => { if (timer) clearTimeout(timer); };
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   if (!visible) return null;

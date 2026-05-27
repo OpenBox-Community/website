@@ -20,7 +20,14 @@ function Join() {
       <header className="page-header">
         <div className="container">
           <div className="page-header__crumb fade-up">// JOIN</div>
-          <h1 className="display h1 page-header__title fade-up fade-up--1 glitch" data-text="COME BUILD WITH US.">COME BUILD<br/>WITH US.</h1>
+          <h1
+            className="display h1 page-header__title fade-up fade-up--1 glitch"
+            data-text="COME BUILD WITH US."
+          >
+            COME BUILD
+            <br />
+            WITH US.
+          </h1>
           <p className="page-header__sub fade-up fade-up--2">
             Free to join. Show up. Build something. Meet people who do the same.
           </p>
@@ -31,7 +38,9 @@ function Join() {
         <div className="container">
           <div className="discord-card">
             <div>
-              <div className="label" style={{ color: "var(--green)" }}>// PRIMARY</div>
+              <div className="label" style={{ color: "var(--green)" }}>
+                // PRIMARY
+              </div>
               <h2>DISCORD.</h2>
               <p>discord.gg/openbox — the main community space.</p>
             </div>
@@ -43,7 +52,9 @@ function Join() {
           <div className="section__head">
             <div>
               <div className="section__num">// SOCIALS</div>
-              <h2 className="display h2" style={{ marginTop: 12 }}>EVERYWHERE ELSE.</h2>
+              <h2 className="display h2" style={{ marginTop: 12 }}>
+                EVERYWHERE ELSE.
+              </h2>
             </div>
           </div>
 
@@ -71,21 +82,35 @@ function Join() {
           <div className="section__head">
             <div>
               <div className="section__num">// SUPPORT</div>
-              <h2 className="display h2" style={{ marginTop: 12 }}>SUPPORT VIA PATREON.</h2>
+              <h2 className="display h2" style={{ marginTop: 12 }}>
+                SUPPORT VIA PATREON.
+              </h2>
             </div>
-            <Link to="/tiers" className="btn btn--ghost">Full Tier Details →</Link>
+            <Link to="/tiers" className="btn btn--ghost">
+              Full Tier Details →
+            </Link>
           </div>
 
           <div className="tiers">
             {tiers.map((t) => (
-              <div key={t.name} className={`tier ${"featured" in t && t.featured ? "tier--featured" : ""}`}>
+              <div
+                key={t.name}
+                className={`tier ${"featured" in t && t.featured ? "tier--featured" : ""}`}
+              >
                 <div className="label">// {t.name.toUpperCase()}</div>
                 <div className="tier__name">{t.name}</div>
                 <div className="tier__price">${t.price}</div>
                 <div className="tier__per">/ month</div>
                 <div className="tier__actions">
-                  <Link to="/tiers" className="btn btn--ghost tier__action--detail">View details →</Link>
-                  <a className="btn tier__action--pledge" href="https://patreon.com/OpenBoxComm" target="_blank" rel="noreferrer">
+                  <Link to="/tiers" className="btn btn--ghost tier__action--detail">
+                    View details →
+                  </Link>
+                  <a
+                    className="btn tier__action--pledge"
+                    href="https://patreon.com/OpenBoxComm"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Pledge →
                   </a>
                 </div>

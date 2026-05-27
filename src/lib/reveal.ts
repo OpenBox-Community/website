@@ -37,7 +37,7 @@ function ensureObserver() {
         }
       }
     },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
   );
   return io;
 }
@@ -45,7 +45,10 @@ function ensureObserver() {
 function splitWords(el: HTMLElement) {
   if (el.dataset.wordsDone) return;
   // Skip if contains line breaks or other element children
-  if (el.querySelector("br, span, a, code")) { el.dataset.wordsDone = "1"; return; }
+  if (el.querySelector("br, span, a, code")) {
+    el.dataset.wordsDone = "1";
+    return;
+  }
   const text = el.textContent || "";
   if (!text.trim()) return;
   const words = text.split(/(\s+)/);
@@ -70,7 +73,10 @@ export function applyReveal() {
   const obs = ensureObserver();
 
   // Tag stagger indexes
-  document.querySelectorAll<HTMLElement>(".features, .tiers, .card-grid, .values, .team, .socials, .stats")
+  document
+    .querySelectorAll<HTMLElement>(
+      ".features, .tiers, .card-grid, .values, .team, .socials, .stats",
+    )
     .forEach((p) => markIndex(p, ":scope > *"));
 
   // Docs sections internal stagger
